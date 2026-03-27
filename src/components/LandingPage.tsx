@@ -380,7 +380,7 @@ function LandingPage() {
 
                 <div>
                   <label className="block text-left text-charcoal font-medium mb-3">
-                    Upload forms to convert to digital
+                    Upload all the tasks you want them to run automatic
                   </label>
                   <div className="border-2 border-gold rounded-xl p-4 flex items-center gap-4">
                     <button
@@ -435,16 +435,16 @@ function LandingPage() {
 
             <div className="flex flex-col gap-4 text-center md:text-left">
               <p className="text-charcoal text-lg">
-                <span className="font-medium text-gold">WhatsApp:</span> <span className="text-gold">+27 696 133 396</span>
+                <span className="font-medium text-gold">WhatsApp:</span> <span className="text-gold">+254751772123</span>
               </p>
               <p className="text-charcoal text-lg">
-                <span className="font-medium text-gold">Email:</span> <span className="text-gold">paperless@naiminvestments.com</span>
+                <span className="font-medium text-gold">Email:</span> <span className="text-gold">salminabdalla93@gmail.com</span>
               </p>
             </div>
           </div>
 
           <div className="mt-16 pt-8 border-t border-gray-200 text-center">
-            <p className="text-gray-500 text-sm">© 2026 Naim Agency. All rights reserved. South Africa.</p>
+            <p className="text-gray-500 text-sm">© 2026 Naim Agency. All rights reserved. GlobalWide.</p>
           </div>
         </div>
       </footer>
