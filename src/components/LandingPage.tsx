@@ -372,7 +372,7 @@ function LandingPage() {
                     Tell us about your project/Task/Business/Company
                   </label>
                   <textarea
-                    placeholder="Tell us what tasks you want automated and what success looks like for your business"
+                    placeholder="Tell us what tasks you want to run automatically and How can we help your business, 1. Save business time 2. Reduce Business Cost 3. Increace business revue"
                     rows={5}
                     className="w-full px-6 py-3 border-2 border-gold rounded-xl focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 transition-all text-charcoal placeholder-gray-400 resize-none"
                   />
