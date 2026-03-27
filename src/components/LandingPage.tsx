@@ -84,7 +84,7 @@ function LandingPage() {
           <div className="flex items-center justify-between h-20">
             <div className="flex-shrink-0">
               <img
-                src="/75a4cf79-34b5-4be3-a135-14e2f9aa1764.jpg"
+                src="/image.png"
                 alt="NAIM Agency Logo"
                 className="h-12 w-auto"
               />
@@ -423,32 +423,28 @@ function LandingPage() {
       </main>
 
       <footer className="bg-white border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
-            <div className="flex flex-col items-center md:items-start gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16">
+            <div className="flex-shrink-0">
               <img
-                src="/75a4cf79-34b5-4be3-a135-14e2f9aa1764.jpg"
+                src="/image.png"
                 alt="NAIM Agency Logo"
-                className="h-16 w-auto"
+                className="h-24 w-24"
               />
-              <div className="text-center md:text-left">
-                <h3 className="font-serif text-2xl text-charcoal">Go Automatic</h3>
-                <p className="text-gray-600 text-sm">by NAIM Agency</p>
-              </div>
             </div>
 
-            <div className="flex flex-col items-center md:items-start gap-3 text-center md:text-left">
+            <div className="flex flex-col gap-4 text-center md:text-left">
               <p className="text-charcoal text-lg">
-                <span className="font-medium text-gold">WhatsApp:</span> +254 751 772 123
+                <span className="font-medium text-gold">WhatsApp:</span> <span className="text-gold">+27 696 133 396</span>
               </p>
               <p className="text-charcoal text-lg">
-                <span className="font-medium text-gold">Email:</span> salminabdalla93@gmail.com
+                <span className="font-medium text-gold">Email:</span> <span className="text-gold">paperless@naiminvestments.com</span>
               </p>
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-gray-200 text-center">
-            <p className="text-gray-500 text-sm">© 2025 NAIM Agency. All rights reserved. Kenya Data Protection Act Compliant.</p>
+          <div className="mt-16 pt-8 border-t border-gray-200 text-center">
+            <p className="text-gray-500 text-sm">© 2026 Naim Agency. All rights reserved. South Africa.</p>
           </div>
         </div>
       </footer>
