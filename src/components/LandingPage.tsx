@@ -21,10 +21,11 @@ declare global {
 
 function AccordionItem({ question, answer, isOpen, onToggle, isDarkMode }: { question: string; answer: string; isOpen: boolean; onToggle: () => void; isDarkMode: boolean }) {
   return (
-    <div className={`border rounded-xl transition-all duration-300 ${isOpen ? `border-gold ${isDarkMode ? 'bg-black' : 'bg-white'}` : `${isDarkMode ? 'border-gold/30 bg-black' : 'border-gray-200 bg-white'}`}`}>
+    <div className={`border rounded-xl transition-all duration-300 ${isOpen ? `border-gold ${isDarkMode ? 'bg-black' : 'bg-white'}` : `${isDarkMode ? 'border-gold/30 bg-black' : 'border-gray-200 bg-white'}`}`} style={isDarkMode ? { backgroundColor: '#000000' } : {}}>
       <button
         onClick={onToggle}
-        className={`w-full px-8 py-5 text-left flex items-center justify-between transition-colors ${isDarkMode ? 'hover:bg-gray-900' : 'hover:bg-gray-50'}`}
+        className={`w-full px-8 py-5 text-left flex items-center justify-between transition-colors ${isDarkMode ? 'hover:bg-black' : 'hover:bg-gray-50'}`}
+        style={isDarkMode ? { backgroundColor: '#000000' } : {}}
       >
         <span className={`font-medium text-lg ${isOpen ? 'text-gold' : isDarkMode ? 'text-white' : 'text-charcoal'}`}>{question}</span>
         <ChevronDown
@@ -47,27 +48,6 @@ function LandingPage() {
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [isTranslateReady, setIsTranslateReady] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  useEffect(() => {
-    const images = [
-      '/20260327_0103_Image_Generation_remix_01kmp2r4sffextkztf38j7qden.png',
-      '/20260327_0112_Image_Generation_simple_compose_01kmp38x7pfb193z8nb1gxn98d.png',
-      '/image.png'
-    ];
-
-    let loadedCount = 0;
-    images.forEach(src => {
-      const img = new Image();
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === images.length) {
-          setImagesLoaded(true);
-        }
-      };
-      img.src = src;
-    });
-  }, []);
 
   useEffect(() => {
     const savedDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -85,10 +65,28 @@ function LandingPage() {
       document.documentElement.classList.add('dark');
       document.documentElement.style.backgroundColor = '#000000';
       document.body.style.backgroundColor = '#000000';
+      const darkFavicon = document.createElement('link');
+      darkFavicon.rel = 'icon';
+      darkFavicon.type = 'image/svg+xml';
+      darkFavicon.href = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='none' stroke='%23C9A961' stroke-width='3'/><circle cx='50' cy='50' r='45' fill='%23000000'/><text x='50' y='60' font-family='serif' font-size='45' font-weight='bold' fill='%23C9A961' text-anchor='middle' font-style='italic'>N</text></svg>`;
+      const oldFavicon = document.querySelector('link[rel="icon"]');
+      if (oldFavicon) {
+        oldFavicon.parentNode?.removeChild(oldFavicon);
+      }
+      document.head.appendChild(darkFavicon);
     } else {
       document.documentElement.classList.remove('dark');
       document.documentElement.style.backgroundColor = '#ffffff';
       document.body.style.backgroundColor = '#ffffff';
+      const lightFavicon = document.createElement('link');
+      lightFavicon.rel = 'icon';
+      lightFavicon.type = 'image/svg+xml';
+      lightFavicon.href = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='none' stroke='%23C9A961' stroke-width='3'/><circle cx='50' cy='50' r='45' fill='%23ffffff'/><text x='50' y='60' font-family='serif' font-size='45' font-weight='bold' fill='%23C9A961' text-anchor='middle' font-style='italic'>N</text></svg>`;
+      const oldFavicon = document.querySelector('link[rel="icon"]');
+      if (oldFavicon) {
+        oldFavicon.parentNode?.removeChild(oldFavicon);
+      }
+      document.head.appendChild(lightFavicon);
     }
   }, [isDarkMode]);
 
@@ -258,24 +256,25 @@ function LandingPage() {
   const handleLanguageChange = (languageCode: string) => {
     setShowLanguageMenu(false);
 
-    const setCookie = (name: string, value: string, days: number) => {
+    const setCookie = (name: string, value: string) => {
       const expires = new Date();
-      expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-      document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/;domain=${window.location.hostname}`;
+      expires.setTime(expires.getTime() + 365 * 24 * 60 * 60 * 1000);
+      document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
     };
 
     const eraseCookie = (name: string) => {
-      document.cookie = `${name}=; Max-Age=-99999999; path=/;domain=${window.location.hostname}`;
+      document.cookie = `${name}=; Max-Age=-99999999; path=/`;
     };
 
     if (languageCode === 'en') {
       eraseCookie('googtrans');
-      eraseCookie('googtrans');
-      window.location.reload();
     } else {
-      setCookie('googtrans', `/en/${languageCode}`, 365);
-      window.location.reload();
+      setCookie('googtrans', `/en/${languageCode}`);
     }
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 50);
   };
 
   useEffect(() => {
