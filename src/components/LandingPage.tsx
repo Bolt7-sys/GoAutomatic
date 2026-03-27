@@ -369,7 +369,7 @@ function LandingPage() {
 
                 <div>
                   <label className="block text-left text-charcoal font-medium mb-3">
-                    Tell us about your project
+                    Tell us about your project/Task/Business/Company
                   </label>
                   <textarea
                     placeholder="Tell us what tasks you want automated and what success looks like for your business"
